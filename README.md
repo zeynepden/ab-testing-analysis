@@ -8,13 +8,13 @@ The analysis combines **SQL for data aggregation** and **Python for statistical 
 
 ---
 
-# Business Question
+## Business Question
 
 Should the company replace the original landing page with the new version?
 
 ---
 
-# Dataset
+## Dataset
 
 The dataset contains the following columns:
 
@@ -26,19 +26,19 @@ The dataset contains the following columns:
 
 ---
 
-# Methodology
+## Methodology
 
 The analysis follows these steps:
 
-1. Load and inspect the dataset
-2. Calculate conversion rates for each group
-3. Compare performance between groups
-4. Run a statistical hypothesis test
-5. Interpret results from a business perspective
+1. Load and inspect the dataset  
+2. Calculate conversion rates for each group  
+3. Compare performance between groups  
+4. Run a statistical hypothesis test  
+5. Interpret results from a business perspective  
 
 ---
 
-# SQL Analysis
+## SQL Analysis
 
 SQL was used to compute:
 
@@ -50,11 +50,67 @@ SQL was used to compute:
 
 Example SQL aggregation:
 
-```sql
-SELECT
-    "group",
-    COUNT(*) AS total_users,
-    SUM(converted) AS total_conversions,
-    ROUND(100.0 * SUM(converted) / COUNT(*), 2) AS conversion_rate_pct
-FROM ab_test_data
-GROUP BY "group";
+    SELECT
+        "group",
+        COUNT(*) AS total_users,
+        SUM(converted) AS total_conversions,
+        ROUND(100.0 * SUM(converted) / COUNT(*), 2) AS conversion_rate_pct
+    FROM ab_test_data
+    GROUP BY "group";
+
+---
+
+## Python Statistical Test
+
+Python was used to perform a **proportion z-test** to determine whether the difference in conversion rate is statistically significant.
+
+Libraries used:
+
+- pandas  
+- matplotlib  
+- statsmodels  
+
+---
+
+## Key Metrics
+
+The analysis focuses on:
+
+- Conversion Rate  
+- Absolute Lift  
+- Relative Lift  
+- Statistical Significance (p-value)  
+
+---
+
+## Project Structure
+
+    ab-testing-analysis/
+    │
+    ├── data
+    │   └── ab_test_data.csv
+    │
+    ├── notebooks
+    │   └── ab_test_analysis.ipynb
+    │
+    ├── sql
+    │   └── ab_test_analysis.sql
+    │
+    └── README.md
+
+---
+
+## Tools Used
+
+- SQL  
+- Python  
+- Pandas  
+- Matplotlib  
+- Statsmodels  
+- GitHub  
+
+---
+
+## Goal
+
+The goal of this project is to demonstrate how data analysts evaluate experiments and support product decisions using **data-driven insights**.
